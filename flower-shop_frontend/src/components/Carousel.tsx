@@ -16,7 +16,7 @@ class Carousel extends React.Component {
    render() {
     return (
         <>
-        <OwlCarousel className="owl-carousel owl-carousel1 owl-carousel-fullwidth fh5co-light-arrow animate-box" loop items={1} nav>
+        <OwlCarousel nav autoplay animateIn loop items={1}>
 			    <div className="item"><a className="image-popup"><img src={'assets/images/img_large_1.jpg'} alt="image"/></a></div>
 			    <div className="item"><a className="image-popup"><img src={'assets/images/img_large_2.jpg'} alt="image"/></a></div>
 			    <div className="item"><a className="image-popup"><img src={'assets/images/img_large_3.jpg'} alt="image"/></a></div>
@@ -70,6 +70,11 @@ class Carousel extends React.Component {
                     </div>
                 </div>
             </div>
+            <div id="fh5co-intro-section">
+            			<div className="fh5co-intro-cover text-center animate-box" data-animate-effect="fadeIn" data-stellar-background-ratio="0.5" style={{backgroundImage: "url(assets/images/intro.jpg)"}}>
+            				<a href="#" className="btn">Serving You Is Our First Priority</a>
+            			</div>
+            		</div>
         </>
     )
 }

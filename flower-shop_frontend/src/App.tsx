@@ -23,6 +23,9 @@ import './assets/css/style.css'
 
 import Header from './components/Header.tsx';
 import Carousel from './components/Carousel.tsx';
+import ProductSection from './components/ProductSection.tsx';
+import AboutSection from './components/About.tsx';
+import Footer from './components/Footer.tsx';
 
 function App() {
 
@@ -31,6 +34,9 @@ function App() {
         <div className="box-wrap">
             <Header />
             <Carousel />
+            <ProductSection />
+            <AboutSection />
+            <Footer />
         </div>
     </>
   )
