@@ -11,7 +11,7 @@ class AboutSection extends React.Component {
                                 <i className="icon-shield"></i>
                                 <div className="holder-section">
                                     <h3>About Us</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+                                    <p>behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
                                 </div>
                             </div>
                         </div>
