@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class GalleryPageComponent {
 
+  ngAfterViewInit() {
+    const event = new Event('load');
+          window.dispatchEvent(event);
+  }
+  
 }
