@@ -1,24 +1,35 @@
 <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
+  <div class="container d-flex align-items-center justify-content-between">
 
-      <div class="logo">
-        <!-- <h1 class="text-light"><a href="index.html">Serenity</a></h1> -->
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <a href=""><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
-          <li><a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">Evenimente</a></li>
-          <li><a routerLink="/services" routerLinkActive="active" ariaCurrentWhenActive="page">Buchete</a></li>
-          <li><a routerLink="/gallery" routerLinkActive="active" ariaCurrentWhenActive="page">Gallery</a></li>
-          <li><a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page">Contact</a></li>
-
-          <li><a class="getstarted" href="">Get Started</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+    <div class="logo">
+      <a href=""><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
     </div>
-</header><!-- End Header -->
+
+    <nav id="navbar" class="navbar">
+      <ul class="navbar-nav flex-grow-1 justify-content-center flex-row">
+        <li><a routerLink="/home" style="text-decoration: none;" routerLinkActive="active" ariaCurrentWhenActive="page">Acasa</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Evenimente
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/option1" routerLinkActive="active" ariaCurrentWhenActive="page">Option 1</a></li>
+            <li><a class="dropdown-item" routerLink="/option2" routerLinkActive="active" ariaCurrentWhenActive="page">Option 2</a></li>
+          </ul>
+        </li>
+        <li><a routerLink="/services" style="text-decoration: none;" routerLinkActive="active" ariaCurrentWhenActive="page">Florarie</a></li>
+        <li><a routerLink="/gallery" style="text-decoration: none;" routerLinkActive="active" ariaCurrentWhenActive="page">Galerie</a></li>
+        <li><a routerLink="/contact" style="text-decoration: none;" routerLinkActive="active" ariaCurrentWhenActive="page">Contact</a></li>
+      </ul>
+
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+
+    <div class="d-flex">
+      <button class="btn btn-outline-dark testazaza me-2"><i class="bi bi-heart"></i></button>
+      <button class="btn btn-outline-dark me-2"><i class="bi bi-person"></i></button>
+      <button class="btn btn-outline-dark"><i class="bi bi-cart"></i></button>
+    </div>
+
+  </div>
+</header>

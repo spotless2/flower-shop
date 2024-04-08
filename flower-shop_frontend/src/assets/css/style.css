@@ -128,6 +128,12 @@ h6 {
   display: flex;
   list-style: none;
   align-items: center;
+  justify-content: center;
+}
+
+.navbar .d-flex {
+  position: absolute;
+  right: 0;
 }
 
 .navbar li {
@@ -264,6 +270,7 @@ h6 {
 
   .navbar ul {
     display: none;
+    justify-content: center;
   }
 }
 
@@ -349,6 +356,26 @@ h6 {
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
+
+.centered-image {
+  width: 100%; /* Reduce the width to 80% */
+  display: block; /* Make the image a block element */
+  margin-left: auto; /* Auto margin on the left */
+  margin-right: auto; /* Auto margin on the right */
+}
+
+#carouselExampleIndicators {
+  width: 90%; /* Reduce the width of the carousel to 60% */
+  height: 50%; /* Set the height of the carousel */
+  margin: 0 auto; /* Center the carousel */
+}
+
+.carousel-item {
+  height: 50%; /* Set the height of the carousel items */
+  overflow: hidden; /* Hide the parts of the images that are outside the carousel items */
+}
+
+
 
 /*--------------------------------------------------------------
 # Hero Section
