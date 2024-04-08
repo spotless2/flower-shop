@@ -8,8 +8,8 @@ import { ContactPageComponent } from './components/contact-page/contact-page.com
 export const routes: Routes = [
     { path: '', component: MainPageComponent},
     { path: 'home', component: MainPageComponent},
-    { path: 'about', component: AboutPageComponent},
-    { path: 'services', component: ServicesPageComponent},
+    { path: 'events', component: AboutPageComponent},
+    { path: 'flowers', component: ServicesPageComponent},
     { path: 'gallery', component: GalleryPageComponent},
     { path: 'contact', component: ContactPageComponent},
 ];
