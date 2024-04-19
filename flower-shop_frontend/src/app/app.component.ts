@@ -1,22 +1,30 @@
 import { Component, ElementRef } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CommonModule } from '@angular/common';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MainPageComponent, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MainPageComponent, NavbarComponent, FooterComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'flower-shop';
+  showNavFooter: boolean = true;
 
-  constructor(private elRef: ElementRef){ 
-  
-  }
+  constructor(private elRef: ElementRef, private router: Router, private activatedRoute: ActivatedRoute) {
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showNavFooter = !(event.url.includes('/login') || event.url.includes('/register'));
+      }
+  })
+}
 
   ngOnInit() {
     const backToTopButton = this.elRef.nativeElement.querySelector('.back-to-top');
