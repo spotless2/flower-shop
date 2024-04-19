@@ -4,6 +4,10 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { ServicesPageComponent } from './components/services-page/services-page.component';
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { DigitalInvitationsComponent } from './components/digital-invitations/digital-invitations.component';
+import { EventPackagesComponent } from './components/event-packages/event-packages.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent},
@@ -12,4 +16,8 @@ export const routes: Routes = [
     { path: 'flowers', component: ServicesPageComponent},
     { path: 'gallery', component: GalleryPageComponent},
     { path: 'contact', component: ContactPageComponent},
+    { path: 'digital-invitations', component: DigitalInvitationsComponent},
+    { path: 'event-packages', component: EventPackagesComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'register', component: RegisterComponent},
 ];
