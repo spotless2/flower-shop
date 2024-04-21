@@ -1,0 +1,268 @@
+<main>
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700" rel="stylesheet"
+		type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" />
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/animate.css" />
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/icomoon.css" />
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/bootstrap.css" />
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/magnific-popup.css" />
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/owl.theme.default.min.css" />
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="/assets/theme-1_assets/css/style_1.css" />
+
+	<!-- Modernizr JS -->
+	<script src="/assets/theme-1_assets/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+	<div id="page">
+		<nav class="fh5co-nav" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="col-l-2">
+						<div id="fh5co-logo">
+							<a class="text-white">Invitatie nunta</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<header id="fh5co-header" class="fh5co-cover" role="banner"
+			style="background-image: url(/assets/theme-1_assets/images/img_bg_2.jpg)"
+			data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<div class="display-t">
+							<div class="display-tc animate-box" data-animate-effect="fadeIn">
+								<h1>{{ brideFirstName }} &amp; {{ groomFirstName }}</h1>
+								<h2>Ne casatorim!</h2>
+								<div class="simply-countdown simply-countdown-one"></div>
+								<p>
+									<a fragment="fh5co-couple" class="btn btn-default btn-sm">
+										<span class="icon-arrow-down"></span>
+									</a>
+								  </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div id="fh5co-couple">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+						<h2>Hello!</h2>
+						<h3>{{ weedingDate }}</h3>
+						<p>
+							Te invitam sa ne fii alaturi in cea mai importanta zi din viata
+							noastra
+						</p>
+					</div>
+				</div>
+				<div class="couple-wrap animate-box">
+					<div class="couple-half">
+						<div class="groom">
+							<img src="/assets/theme-1_assets/images/groom.jpg" alt="groom" class="img-responsive" />
+						</div>
+						<div class="desc-groom">
+							<h3>{{ groomFirstName + groomLastName }}</h3>
+							<p>
+								{{ groomDescription }}
+							</p>
+						</div>
+					</div>
+					<p class="heart text-center"><i class="icon-heart2"></i></p>
+					<div class="couple-half">
+						<div class="bride">
+							<img src="/assets/theme-1_assets/images/bride.jpg" alt="groom" class="img-responsive" />
+						</div>
+						<div class="desc-bride">
+							<h3>{{ brideFirstName + brideLastName }}</h3>
+							<p>
+								{{ brideDescription }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" style="margin-bottom: 0">
+					<p>Impreuna cu nasii</p>
+					<h3>{{ godparentsName }}</h3>
+				</div>
+			</div>
+		</div>
+
+		<div id="fh5co-event" class="fh5co-bg"
+			style="background-image: url(/assets/theme-1_assets/images/img_bg_3.jpg)">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+						<span>Te asteptam alaturi de noi sa iei parte la</span>
+						<h2>Evenimentele noastre speciale</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="display-t">
+						<div class="display-tc">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="col-md-4 col-sm-4 text-center">
+									<div class="event-wrap animate-box">
+										<h3>
+											Cununia <br />
+											civila
+										</h3>
+										<p class="text-white display-6">{{ civilLocationName }}</p>
+										<div class="event-col">
+											<i class="icon-clock"></i>
+											<span>{{ "ora " + civilHour }}</span>
+										</div>
+										<div class="event-col">
+											<i class="icon-calendar"></i>
+											<span>{{ civilDate }}</span>
+										</div>
+										<p>
+											{{ civilLocation }}
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-4 text-center">
+									<div class="event-wrap animate-box">
+										<h3>Cununia religioasa</h3>
+										<p class="text-white display-6">
+											{{ religiousLocationName }}
+										</p>
+										<div class="event-col">
+											<i class="icon-clock"></i>
+											<span>{{ "ora " + religiousHour }}</span>
+										</div>
+										<div class="event-col">
+											<i class="icon-calendar"></i>
+											<span>{{ religiousDate }}</span>
+										</div>
+										<p>
+											{{ religiousLocation }}
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-4 text-center">
+									<div class="event-wrap animate-box">
+										<h3>Petrecerea nuntii</h3>
+										<p class="text-white display-6">{{ partyLocationName }}</p>
+										<div class="event-col">
+											<i class="icon-clock"></i>
+											<span>{{ "ora " + partyHour }}</span>
+										</div>
+										<div class="event-col">
+											<i class="icon-calendar"></i>
+											<span>{{ partyDate }}</span>
+										</div>
+										<p>
+											{{ partyLocation }}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="fh5co-footer" style="margin-block-start: auto;">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>Confirmare</h2>
+						<p>
+							Te rugam sa completezi formularul de mai jos. Asteptam cu drag un
+							raspuns din partea ta!
+						</p>
+					</div>
+				</div>
+				<div class="row animate-box">
+					<div class="col-md-10 col-md-offset-1">
+						<form class="form">
+							<div class="col-md-12">
+								<div class="row form-group">
+									<label class="mr-6" for="numarPersoane">Alege numar persoane</label>
+									<select class="form-control ml-3" id="numarPersoane" style="border-radius: 20px"
+										(change)="onChange($event)">
+										<option selected>Numar persoane</option>
+										<option value="1">O persoana</option>
+										<option value="2">Doua persoane</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-12" *ngIf="selectedValue == '1' || selectedValue == '2'">
+								<div class="form-group">
+									<label for="name">Numele tau complet</label>
+									<input type="name" style="border-radius: 20px" class="form-control" id="name"
+										placeholder="Nume" />
+								</div>
+							</div>
+							<div class="col-md-12" *ngIf="selectedValue == '2'">
+								<div class="form-group">
+									<label for="partnerName">Numele complet al partenerului</label>
+									<input type="name" style="border-radius: 20px" class="form-control" id="partnerName"
+										placeholder="Nume" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12">
+									<label for="message">Daca doresti sa ne transmiti ceva, o poti face in casuta de
+										mai jos</label>
+									<br />
+									<textarea class="form-control" style="border-radius: 20px" name="message"
+										id="message" cols="30" rows="10"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Da, confirm prezența" class="btn btn-primary pull-right"
+									data-value="true" />
+								<input type="submit" value="Nu pot să particip" class="btn btn-dark pull-right"
+									data-value="false" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer id="fh5co-footer" role="contentinfo">
+			<div class="container">
+				<div class="row copyright">
+					<div class="col-md-12 text-center">
+						<span class="block cool-font font-big">
+							{{ brideFirstName }} &amp; {{ groomFirstName }}
+						</span>
+						<small class="block">Multumim!</small>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+</main>
