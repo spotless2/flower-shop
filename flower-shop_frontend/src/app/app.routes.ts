@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { ServicesPageComponent } from './components/services-page/services-page.component';
@@ -8,6 +8,7 @@ import { DigitalInvitationsComponent } from './components/digital-invitations/di
 import { EventPackagesComponent } from './components/event-packages/event-packages.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { WeddingTheme1Component } from './components/digital-invitations/invitation-1/wedding-theme-1/wedding-theme-1.component';
 
 export const routes: Routes = [
     { path: '', component: MainPageComponent},
@@ -20,4 +21,7 @@ export const routes: Routes = [
     { path: 'event-packages', component: EventPackagesComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
+    { path: 'digital-invitations/i', component: WeddingTheme1Component},
+    { path: 'digital-invitations/i/:name', component: WeddingTheme1Component },
 ];
+

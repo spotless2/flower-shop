@@ -1,15 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapseModule, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
+declare function burgerMenu(): void;
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgbModule, CommonModule],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgbModule, CommonModule, CollapseModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+
+  isCollapsed = false;
+
+  toggleCollapse() {
+    burgerMenu();
+  }
+
   
   favorites = [
     { name: 'Item1' },

@@ -43,7 +43,7 @@
                                 <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email">
                             </div>
                             <div class="d-flex justify-content-center mt-3">
-                                <button class="btn btn-primary" (click)="nextSection()">Inainte</button>
+                                <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
                               </div>
                         </div>
                         <div class="form-section"
@@ -62,8 +62,8 @@
                                     <input type="file" id="bridePhoto" class="form-control" [(ngModel)]="bridePhoto" name="bridePhoto">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" (click)="nextSection()">Inainte</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
                                   </div>
                             </div>
 
@@ -80,8 +80,8 @@
                                     <input type="file" id="groomPhoto" class="form-control" [(ngModel)]="groomPhoto" name="groomPhoto">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" (click)="nextSection()">Inainte</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
                                   </div>
                             </div>
                             <div class="form-section" [hidden]="currentSection !== 4">
@@ -93,8 +93,8 @@
                                     <input type="text" id="godparentsName" class="form-control" [(ngModel)]="godparentsName" name="godparentsName">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" (click)="nextSection()">Inainte</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
                                   </div>
                             </div>
                         </div>
@@ -115,8 +115,8 @@
                                     <input type="datetime-local" id="civilDateTime" class="form-control" [(ngModel)]="civilDateTime" name="civilDateTime">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" (click)="nextSection()">Inainte</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
                                   </div>
                             </div>
                             <div class="form-section" [hidden]="currentSection !== 6">
@@ -132,8 +132,8 @@
                                     <input type="datetime-local" id="religiousDateTime" class="form-control" [(ngModel)]="religiousDateTime" name="religiousDateTime">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" (click)="nextSection()">Inainte</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
                                   </div>
                             </div>
                             <div class="form-section" [hidden]="currentSection !== 7">
@@ -149,7 +149,7 @@
                                     <input type="datetime-local" id="partyDateTime" class="form-control" [(ngModel)]="partyDateTime" name="partyDateTime">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
                                     <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections">Submit</button>
                                   </div>
                             </div>

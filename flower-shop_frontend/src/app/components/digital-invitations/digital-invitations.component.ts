@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-digital-invitations',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './digital-invitations.component.html',
   styleUrl: './digital-invitations.component.css'
 })
 export class DigitalInvitationsComponent {
+
+  constructor(private http: HttpClient) { }
 
   // form sections
   title = '';
@@ -54,6 +57,9 @@ partyDateTime = '';
   form!: NgForm;
   onSubmit(form: NgForm) {
     console.log(form.value);
+    this.http.post('your-api-url', form.value).subscribe(response => {
+      // handle the response here
+    });
   }
 
 }
