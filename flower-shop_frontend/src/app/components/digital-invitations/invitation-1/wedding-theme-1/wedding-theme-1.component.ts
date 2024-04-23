@@ -2,11 +2,39 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { log } from 'console';
 
 declare function simplyCountdown(elt: string, args: { year: number; month: number; day: number; }): void;
 
-
+interface WeddingData {
+  digitalInvitationName: string;
+  weedingDate: string;
+  email: string;
+  brideFirstName: string;
+  brideLastName: string;
+  brideDescription: string;
+  bridePhoto: string;
+  groomFirstName: string;
+  groomLastName: string;
+  groomDescription: string;
+  groomPhoto: string;
+  parentsName: string;
+  godparentsName: string;
+  civilAddress: string;
+  civilCityCountry: string;
+  civilHour: string;
+  civilDate: string;
+  civilLocationName: string;
+  religiousAddress: string;
+  religiousCityCountry: string;
+  religiousHour: string;
+  religiousDate: string;
+  religiousLocationName: string;
+  partyAddress: string;
+  partyCityCountry: string;
+  partyHour: string;
+  partyDate: string;
+  partyLocationName: string;
+}
 
 @Component({
   selector: 'app-wedding-theme-1',
@@ -17,41 +45,7 @@ declare function simplyCountdown(elt: string, args: { year: number; month: numbe
 })
 export class WeddingTheme1Component {
 
-  invitedName = '';
-  weedingDate = '';
-  title = '';
-  email = '';
-  brideFirstName = 'Evangelina';
-  brideLastName = 'Torres';
-  brideDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec';
-  bridePhoto = '';
-  groomFirstName = 'Alejandro';
-  groomLastName = 'Hernandez';
-  groomDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec';
-  groomPhoto = '';
-  parentsName = 'Teresa Hernandez y Juan Hernandez';
-  godparentsName = 'Pedro Torres y Maria Torres';
-  civilLocation = 'Nuestra casa';
-  civilAddress = 'Zona 1, Guatemala, Guatemala';
-  civilCityCountry = 'Guatemala City, Guatemala';
-  civilDateTime = '2022-12-24T18:00:00';
-  civilHour = '4:00 PM';
-  civilDate = '12/24/2022';
-  civilLocationName = 'Residencia de los Hernandez Torres';
-  religiousLocation = 'Basílica de Esquipulas';
-  religiousAddress = 'Izabal, Guatemala';
-  religiousCityCountry = 'Guatemala City, Guatemala';
-  religiousDateTime = '2022-12-25T18:00:00';
-  religiousHour = '2:00 PM';
-  religiousDate = '3/25/2023';
-  religiousLocationName = 'Basílica de Esquipulas';
-  partyLocation = 'La Finca de los Hernandez';
-  partyAddress = 'quinta los Hernandez Torres, Zona 1, Guatemala, Guatemala';
-  partyCityCountry = 'Guatemala City, Guatemala';
-  partyDateTime = '2022-12-26T18:00:00';
-  partyHour = '9:00 PM';
-  partyDate = '9/26/2022';
-  partyLocationName = 'Ubicación de la fiesta';
+  weddingData: WeddingData;
 
   selectedValue: string = "0";
 
@@ -64,10 +58,41 @@ export class WeddingTheme1Component {
       this.getData(name);
     });
   }
+  // ...
 
   getData(name: string) {
-    this.http.get(`http://localhost:5000/api/endpoint/${name}`).subscribe(data => {
-      // handle the data here
+    this.http.get<WeddingData>(`http://localhost:8080/getData/${name}`).subscribe(data => { // Remove type annotation for 'data'
+      console.log(data);
+      if (!this.weddingData) {
+        this.weddingData = {} as WeddingData;
+      }
+      this.weddingData.email = data.email;
+      this.weddingData.brideFirstName = data.brideFirstName;
+      this.weddingData.brideLastName = data.brideLastName;
+      this.weddingData.brideDescription = data.brideDescription;
+      this.weddingData.bridePhoto = data.bridePhoto;
+      this.weddingData.groomFirstName = data.groomFirstName;
+      this.weddingData.groomLastName = data.groomLastName;
+      this.weddingData.groomDescription = data.groomDescription;
+      this.weddingData.groomPhoto = data.groomPhoto;
+      this.weddingData.parentsName = data.parentsName;
+      this.weddingData.godparentsName = data.godparentsName;
+      this.weddingData.civilAddress = data.civilAddress;
+      this.weddingData.civilCityCountry = data.civilCityCountry;
+      this.weddingData.civilHour = data.civilHour;
+      this.weddingData.civilDate = new Date(data.civilDate).toLocaleDateString();;
+      this.weddingData.civilLocationName = data.civilLocationName;
+      this.weddingData.religiousAddress = data.religiousAddress;
+      this.weddingData.religiousCityCountry = data.religiousCityCountry;
+      this.weddingData.religiousHour = data.religiousHour;
+      this.weddingData.religiousDate = new Date(data.religiousDate).toLocaleDateString();;
+      this.weddingData.religiousLocationName = data.religiousLocationName;
+      this.weddingData.partyAddress = data.partyAddress;
+      this.weddingData.partyCityCountry = data.partyCityCountry;
+      this.weddingData.partyHour = data.partyHour;
+      this.weddingData.partyDate = new Date(data.partyDate).toLocaleDateString();;
+      this.weddingData.partyLocationName = data.partyLocationName;
+      this.weddingData.weedingDate = new Date(data.partyDate).toLocaleDateString();;
     });
   }
 
@@ -79,8 +104,7 @@ export class WeddingTheme1Component {
   
   ngAfterViewInit(){
 
-  let d = new Date();
-  d.setDate(d.getDate() + 70); // Add 70 days to the current date
+  let d = new Date(this.weddingData?.partyDate);
 
     simplyCountdown('.simply-countdown-one', {
       year: d.getFullYear(),

@@ -1,50 +1,94 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  NgForm,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-digital-invitations',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: './digital-invitations.component.html',
-  styleUrl: './digital-invitations.component.css'
+  styleUrl: './digital-invitations.component.css',
 })
 export class DigitalInvitationsComponent {
-
-  constructor(private http: HttpClient) { }
+  isDigitalInvitationNameAvailable: boolean;
+  isCheckNameButtonPressed: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
 
   // form sections
-  title = '';
-email = '';
-brideFirstName = '';
-brideLastName = '';
-brideDescription = '';
-bridePhoto = '';
-groomFirstName = '';
-groomLastName = '';
-groomDescription = '';
-groomPhoto = '';
-parentsName = '';
-godparentsName = '';
-civilLocation = '';
-civilAddress = '';
-civilCityCountry = '';
-civilDateTime = '';
-religiousLocation = '';
-religiousAddress = '';
-religiousCityCountry = '';
-religiousDateTime = '';
-partyLocation = '';
-partyAddress = '';
-partyCityCountry = '';
-partyDateTime = '';
+  digitalInvitationName: string = '';
+  email: string = '';
+  brideFirstName: string = '';
+  brideLastName: string = '';
+  brideDescription: string = '';
+  bridePhoto: string = '';
+  groomFirstName: string = '';
+  groomLastName: string = '';
+  groomDescription: string = '';
+  groomPhoto: string = '';
+  parentsName: string = '';
+  godparentsName: string = '';
+  civilLocationName: string = '';
+  civilAddress: string = '';
+  civilCityCountry: string = '';
+  civilDate: Date;
+  civilHour: string = '';
+  religiousLocationName: string = '';
+  religiousAddress: string = '';
+  religiousCityCountry: string = '';
+  religiousDate: Date;
+  religiousHour: string = '';
+  partyLocationName: string = '';
+  partyAddress: string = '';
+  partyCityCountry: string = '';
+  partyDate: Date;
+  partyHour: string = '';
 
   currentSection = 1;
-  totalSections = 7;
+  totalSections = 8;
+  checkNameAvailability(invitationName: string) {
+    const url = `http://localhost:8080/checkNameAvailability/${invitationName}`;
+
+    this.http.get(url, { responseType: 'text' }).subscribe(
+      (response) => {
+        this.isDigitalInvitationNameAvailable =
+          response === 'Name is available';
+        this.isCheckNameButtonPressed = true;
+      },
+      (error) => {
+        this.isDigitalInvitationNameAvailable = false;
+        this.isCheckNameButtonPressed = true;
+      }
+    );
+  }
+
+  form1: FormGroup;
+
+  constructor(private http: HttpClient) {
+    this.form1 = new FormGroup({
+      invitationName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern('^[a-zA-Z-&]+$'),
+      ]),
+    });
+  }
+
+  get invitationNameControl(): FormControl {
+    return this.form1.get('invitationName') as FormControl;
+  }
 
   nextSection() {
     this.currentSection++;
+    console.log(this.currentSection);
   }
 
   previousSection() {
@@ -57,9 +101,20 @@ partyDateTime = '';
   form!: NgForm;
   onSubmit(form: NgForm) {
     console.log(form.value);
-    this.http.post('your-api-url', form.value).subscribe(response => {
-      // handle the response here
-    });
+    form.value.digitalInvitationName = this.invitationNameControl.value;
+    let date = new Date(this.partyDate)
+    let formattedDate = `${date.getDate()} ${date.toLocaleString('ro-RO', { month: 'long' })}`;
+    form.value.weedingDate = formattedDate;
+    this.http.post('http://localhost:8080/saveData', form.value).subscribe(
+      (response: any) => {
+        this.successMessage = 'Data saved successfully!';
+        this.errorMessage = '';
+      },
+      (error: any) => {
+        this.successMessage = '';
+        console.log(error);
+        this.errorMessage = error.error || 'An error occurred while saving the data.';
+      }
+    );
   }
-
 }

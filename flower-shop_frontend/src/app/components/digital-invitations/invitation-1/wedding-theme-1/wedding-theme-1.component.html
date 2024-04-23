@@ -49,7 +49,7 @@
 					<div class="col-md-8 col-md-offset-2 text-center">
 						<div class="display-t">
 							<div class="display-tc animate-box" data-animate-effect="fadeIn">
-								<h1>{{ brideFirstName }} &amp; {{ groomFirstName }}</h1>
+								<h1>{{ weddingData?.brideFirstName }} &amp; {{ weddingData?.groomFirstName }}</h1>
 								<h2>Ne casatorim!</h2>
 								<div class="simply-countdown simply-countdown-one"></div>
 								<p>
@@ -68,8 +68,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-						<h2>Hello!</h2>
-						<h3>{{ weedingDate }}</h3>
+						<h2>Bine ai venit!</h2>
+						<h3>{{ weddingData?.weedingDate }}</h3>
 						<p>
 							Te invitam sa ne fii alaturi in cea mai importanta zi din viata
 							noastra
@@ -82,9 +82,9 @@
 							<img src="/assets/theme-1_assets/images/groom.jpg" alt="groom" class="img-responsive" />
 						</div>
 						<div class="desc-groom">
-							<h3>{{ groomFirstName + groomLastName }}</h3>
+							<h3>{{ weddingData?.groomFirstName + weddingData?.groomLastName }}</h3>
 							<p>
-								{{ groomDescription }}
+								{{ weddingData?.groomDescription }}
 							</p>
 						</div>
 					</div>
@@ -94,9 +94,9 @@
 							<img src="/assets/theme-1_assets/images/bride.jpg" alt="groom" class="img-responsive" />
 						</div>
 						<div class="desc-bride">
-							<h3>{{ brideFirstName + brideLastName }}</h3>
+							<h3>{{ weddingData?.brideFirstName + weddingData?.brideLastName }}</h3>
 							<p>
-								{{ brideDescription }}
+								{{ weddingData?.brideDescription }}
 							</p>
 						</div>
 					</div>
@@ -106,7 +106,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" style="margin-bottom: 0">
 					<p>Impreuna cu nasii</p>
-					<h3>{{ godparentsName }}</h3>
+					<h3>{{ weddingData?.godparentsName }}</h3>
 				</div>
 			</div>
 		</div>
@@ -131,17 +131,17 @@
 											Cununia <br />
 											civila
 										</h3>
-										<p class="text-white display-6">{{ civilLocationName }}</p>
+										<p class="text-white display-6">{{ weddingData?.civilLocationName }}</p>
 										<div class="event-col">
 											<i class="icon-clock"></i>
-											<span>{{ "ora " + civilHour }}</span>
+											<span>{{ "ora " + weddingData?.civilHour }}</span>
 										</div>
 										<div class="event-col">
 											<i class="icon-calendar"></i>
-											<span>{{ civilDate }}</span>
+											<span>{{ weddingData?.civilDate }}</span>
 										</div>
 										<p>
-											{{ civilLocation }}
+											{{ weddingData?.civilAddress }}
 										</p>
 									</div>
 								</div>
@@ -149,35 +149,35 @@
 									<div class="event-wrap animate-box">
 										<h3>Cununia religioasa</h3>
 										<p class="text-white display-6">
-											{{ religiousLocationName }}
+											{{ weddingData?.religiousLocationName }}
 										</p>
 										<div class="event-col">
 											<i class="icon-clock"></i>
-											<span>{{ "ora " + religiousHour }}</span>
+											<span>{{ "ora " + weddingData?.religiousHour }}</span>
 										</div>
 										<div class="event-col">
 											<i class="icon-calendar"></i>
-											<span>{{ religiousDate }}</span>
+											<span>{{ weddingData?.religiousDate }}</span>
 										</div>
 										<p>
-											{{ religiousLocation }}
+											{{ weddingData?.religiousAddress }}
 										</p>
 									</div>
 								</div>
 								<div class="col-md-4 col-sm-4 text-center">
 									<div class="event-wrap animate-box">
 										<h3>Petrecerea nuntii</h3>
-										<p class="text-white display-6">{{ partyLocationName }}</p>
+										<p class="text-white display-6">{{ weddingData?.partyLocationName }}</p>
 										<div class="event-col">
 											<i class="icon-clock"></i>
-											<span>{{ "ora " + partyHour }}</span>
+											<span>{{ "ora " + weddingData?.partyHour }}</span>
 										</div>
 										<div class="event-col">
 											<i class="icon-calendar"></i>
-											<span>{{ partyDate }}</span>
+											<span>{{ weddingData?.partyDate }}</span>
 										</div>
 										<p>
-											{{ partyLocation }}
+											{{ weddingData?.partyAddress }}
 										</p>
 									</div>
 								</div>
@@ -253,7 +253,7 @@
 				<div class="row copyright">
 					<div class="col-md-12 text-center">
 						<span class="block cool-font font-big">
-							{{ brideFirstName }} &amp; {{ groomFirstName }}
+							{{ weddingData?.brideFirstName }} &amp; {{ weddingData?.groomFirstName }}
 						</span>
 						<small class="block">Multumim!</small>
 					</div>

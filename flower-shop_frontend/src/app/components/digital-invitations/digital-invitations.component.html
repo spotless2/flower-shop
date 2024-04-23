@@ -35,11 +35,7 @@
                         <div class="form-section" [hidden]="currentSection !== 1">
                             <h2 class="text-dark">Informatii generale</h2>
                             <div class="form-group">
-                                <label for="title">Titlul invitatiei</label>
-                                <input type="text" id="title" class="form-control" [(ngModel)]="title" name="title">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email pentru confirmare</label>
+                                <label for="email">Email-ul pe care doriti sa primiti raspunsurile</label>
                                 <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email">
                             </div>
                             <div class="d-flex justify-content-center mt-3">
@@ -105,14 +101,16 @@
                             <div class="form-section" [hidden]="currentSection !== 5">
                                 <div class="form-group">
                                     <h3>Cununie civila</h3>
-                                    <label for="civilLocation">Locatie</label>
-                                    <input type="text" id="civilLocation" class="form-control" [(ngModel)]="civilLocation" name="civilLocation">
+                                    <label for="civilLocationName">Numele locatie</label>
+                                    <input type="text" id="civilLocationName" class="form-control" [(ngModel)]="civilLocationName" name="civilLocationName">
                                     <label for="civilAddress">Adresa</label>
                                     <input type="text" id="civilAddress" class="form-control" [(ngModel)]="civilAddress" name="civilAddress">
                                     <label for="civilCityCountry">Orasul si tara</label>
                                     <input type="text" id="civilCityCountry" class="form-control" [(ngModel)]="civilCityCountry" name="civilCityCountry">
-                                    <label for="civilDateTime">Data si ora</label>
-                                    <input type="datetime-local" id="civilDateTime" class="form-control" [(ngModel)]="civilDateTime" name="civilDateTime">
+                                    <label for="civilDate">Data</label>
+                                    <input type="date" id="civilDate" class="form-control" [(ngModel)]="civilDate" name="civilDate">
+                                    <label for="civilHour">Ora</label>
+                                    <input type="text" id="civilHour" class="form-control" [(ngModel)]="civilHour" name="civilHour">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
                                     <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
@@ -122,14 +120,16 @@
                             <div class="form-section" [hidden]="currentSection !== 6">
                                 <div class="form-group">
                                     <h3>Cununie religioasa</h3>
-                                    <label for="religiousLocation">Locatie</label>
-                                    <input type="text" id="religiousLocation" class="form-control" [(ngModel)]="religiousLocation" name="religiousLocation">
+                                    <label for="religiousLocationName">Numele locatie</label>
+                                    <input type="text" id="religiousLocationName" class="form-control" [(ngModel)]="religiousLocationName" name="religiousLocationName">
                                     <label for="religiousAddress">Adresa</label>
                                     <input type="text" id="religiousAddress" class="form-control" [(ngModel)]="religiousAddress" name="religiousAddress">
                                     <label for="religiousCityCountry">Orasul si tara</label>
                                     <input type="text" id="religiousCityCountry" class="form-control" [(ngModel)]="religiousCityCountry" name="religiousCityCountry">
-                                    <label for="religiousDateTime">Data si ora</label>
-                                    <input type="datetime-local" id="religiousDateTime" class="form-control" [(ngModel)]="religiousDateTime" name="religiousDateTime">
+                                    <label for="religiousDate">Data</label>
+                                    <input type="date" id="religiousDate" class="form-control" [(ngModel)]="religiousDate" name="religiousDate">
+                                    <label for="religiousHour">Ora</label>
+                                    <input type="text" id="religiousHour" class="form-control" [(ngModel)]="religiousHour" name="religiousHour">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
                                     <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
@@ -139,21 +139,49 @@
                             <div class="form-section" [hidden]="currentSection !== 7">
                                 <div class="form-group">
                                     <h3>Petrecere</h3>
-                                    <label for="partyLocation">Locatie</label>
-                                    <input type="text" id="partyLocation" class="form-control" [(ngModel)]="partyLocation" name="partyLocation">
+                                    <label for="partyLocationName">Numele locatie</label>
+                                    <input type="text" id="partyLocationName" class="form-control" [(ngModel)]="partyLocationName" name="partyLocationName">
                                     <label for="partyAddress">Adresa</label>
                                     <input type="text" id="partyAddress" class="form-control" [(ngModel)]="partyAddress" name="partyAddress">
                                     <label for="partyCityCountry">Orasul si tara</label>
                                     <input type="text" id="partyCityCountry" class="form-control" [(ngModel)]="partyCityCountry" name="partyCityCountry">
-                                    <label for="partyDateTime">Data si ora</label>
-                                    <input type="datetime-local" id="partyDateTime" class="form-control" [(ngModel)]="partyDateTime" name="partyDateTime">
+                                    <label for="partyDate">Data</label>
+                                    <input type="date" id="partyDate" class="form-control" [(ngModel)]="partyDate" name="partyDate">
+                                    <label for="partyHour">Ora</label>
+                                    <input type="text" id="partyHour" class="form-control" [(ngModel)]="partyHour" name="partyHour">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
                                     <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections">Submit</button>
-                                  </div>
+                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
+                                </div>
                             </div>
                         </div>
+                        <div class="form-section" [hidden]="currentSection !== 8">
+                            <div class="form-group">
+                                <h3>Pasi finali</h3>
+                                <label for="digitalInvitationName">Numele invitatiei digitale &#40;site.ro&#47;digital-invitations&#47;i&#47;<strong>numele-invitatiei</strong>&#41;</label>
+                                <input type="text" id="digitalInvitationName" class="form-control" [formControl]="invitationNameControl" name="digitalInvitationName">
+                                <div *ngIf="invitationNameControl.invalid && invitationNameControl.touched" class="text-danger">
+                                    Ati introdus un nume invalid. Numele trebuie să aibă cel puțin 3 caractere și poate conține doar litere, caracterul "-" și caracterul "&"
+                                  </div>
+                                <div class="form-group d-flex align-items-center">
+                                    <button class="btn btn-info mt-2" type="button" (click)="checkNameAvailability(invitationNameControl.value)" [disabled]="invitationNameControl.invalid">Verifica disponibilitatea numelui</button>                                    
+                                    <div class="p-1 mt-2">
+                                        <i class="fas fa-2x" [ngClass]="{'fa-check text-success': isDigitalInvitationNameAvailable, 'fa-times text-danger': !isDigitalInvitationNameAvailable}" *ngIf="isCheckNameButtonPressed"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center mt-3 gap-2">
+                                <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
+                                <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections" [disabled]="!isDigitalInvitationNameAvailable">Submit</button>                              </div>
+                        </div>
+                        <div *ngIf="successMessage" class="alert alert-success">
+                            {{ successMessage }}
+                          </div>
+                          
+                          <div *ngIf="errorMessage" class="alert alert-danger">
+                            {{ errorMessage }}
+                          </div>
                     </form>
                 </div>
             </div>

@@ -1,0 +1,16 @@
+/* Change the background color of the datepicker */
+.bs-datepicker {
+    background-color: #f8f9fa;
+  }
+  
+  /* Change the color of the datepicker text */
+  .bs-datepicker .datepicker-switch,
+  .bs-datepicker .prev, .bs-datepicker .next,
+  .bs-datepicker .dow {
+    color: #495057;
+  }
+  
+  /* Change the color of the selected date */
+  .bs-datepicker .day.active {
+    background-color: #007bff;
+  }
