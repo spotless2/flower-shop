@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
 declare function simplyCountdown(elt: string, args: { year: number; month: number; day: number; }): void;
@@ -39,13 +40,18 @@ interface WeddingData {
 @Component({
   selector: 'app-wedding-theme-1',
   standalone: true,
-  imports: [CommonModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   templateUrl: './wedding-theme-1.component.html',
   styleUrl: './wedding-theme-1.component.css'
 })
 export class WeddingTheme1Component {
 
   weddingData: WeddingData;
+
+  numberOfPersons: number;
+  fullName: string;
+  partnerFullName: string;
+  message: string;
 
   selectedValue: string = "0";
 
@@ -100,7 +106,34 @@ export class WeddingTheme1Component {
     this.selectedValue = String((event.target as HTMLSelectElement).value);
   }
 
-
+  sendResponse(response: boolean, event: Event) {
+    event.preventDefault();
+    const url = 'http://localhost:8080/sendEmail';
+    let subject = '';
+    let text = '';
+    let to = this.weddingData.email;
+  
+    if (response) {
+      subject = 'Confirmare prezenta - ' + this.fullName;
+      text = 'Voi fi alaturi de voi!' +'\n' + 'Numar persoane: ' + this.numberOfPersons + '\n' + this.fullName;
+      if (this.numberOfPersons > 1) {
+        text += ', ' + this.partnerFullName;
+      }
+      text += '\n' + this.message;
+    } else {
+      subject = 'Nu pot participa -' + this.fullName;
+      text = this.fullName + '\n' + this.message;
+    }
+  
+    const body = {
+      to: to,
+      subject: subject,
+      text: text
+    };
+  
+    this.http.post(url, body).subscribe(res => {
+    });
+  }
   
   ngAfterViewInit(){
 

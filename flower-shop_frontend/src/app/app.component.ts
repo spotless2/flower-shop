@@ -21,7 +21,7 @@ export class AppComponent {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showNavFooter = !(event.url.includes('/login') || event.url.includes('/register') || event.url.includes('/digital-invitations/i'));
+        this.showNavFooter = !(event.url.includes('/login') || event.url.includes('/register') || event.url.includes('/digital-invitations/i') || event.url.includes('panel'));
       }
   })
 }

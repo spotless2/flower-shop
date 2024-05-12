@@ -10,6 +10,8 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-digital-invitations',
   standalone: true,
@@ -51,6 +53,7 @@ export class DigitalInvitationsComponent {
   partyCityCountry: string = '';
   partyDate: Date;
   partyHour: string = '';
+  digitalInvitationLink = '';
 
   currentSection = 1;
   totalSections = 8;
@@ -72,7 +75,7 @@ export class DigitalInvitationsComponent {
 
   form1: FormGroup;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.form1 = new FormGroup({
       invitationName: new FormControl('', [
         Validators.required,
@@ -100,21 +103,31 @@ export class DigitalInvitationsComponent {
   @ViewChild('myForm')
   form!: NgForm;
   onSubmit(form: NgForm) {
-    console.log(form.value);
+
     form.value.digitalInvitationName = this.invitationNameControl.value;
     let date = new Date(this.partyDate)
     let formattedDate = `${date.getDate()} ${date.toLocaleString('ro-RO', { month: 'long' })}`;
     form.value.weedingDate = formattedDate;
+    this.digitalInvitationLink = `http://localhost:4200/digital-invitations/i/${form.value.digitalInvitationName}`;
+
     this.http.post('http://localhost:8080/saveData', form.value).subscribe(
       (response: any) => {
-        this.successMessage = 'Data saved successfully!';
+        this.successMessage = 'Invitatia digitala a fost creeata!'
         this.errorMessage = '';
       },
       (error: any) => {
         this.successMessage = '';
         console.log(error);
-        this.errorMessage = error.error || 'An error occurred while saving the data.';
+        this.errorMessage = error.error || 'A aparut e eroare! Va rugam incercati din nou!';
       }
     );
+  }
+
+  navigateToPayment() {
+    // save the form data somewhere accessible from the payment page
+    // this could be a service or local storage
+  
+    // navigate to the payment page
+    this.router.navigate(['/payment']);
   }
 }

@@ -10,12 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <ol>
-                <li><a href="index.html">Home</a></li>
-                <li>Invitatii digitale</li>
-            </ol>
-        </div>
+        <br>
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Digital Invitations Section ======= -->
@@ -175,8 +170,10 @@
                                 <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
                                 <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections" [disabled]="!isDigitalInvitationNameAvailable">Submit</button>                              </div>
                         </div>
+                        <br>
                         <div *ngIf="successMessage" class="alert alert-success">
                             {{ successMessage }}
+                            <a [href]="digitalInvitationLink">Click aici pentru a vedea invitatia digitala</a>
                           </div>
                           
                           <div *ngIf="errorMessage" class="alert alert-danger">
