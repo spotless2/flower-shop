@@ -17,5 +17,4 @@ public class Product {
 
     private String productPhoto;
 
-    // getters and setters
 }

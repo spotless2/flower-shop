@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -39,6 +40,37 @@ public class ProductController {
         product.setProductPhoto(fileName);
         Product savedProduct = productService.saveProduct(product);
         return ResponseEntity.ok(savedProduct);
+    }
+
+    @PutMapping("/products/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id,
+                                                 @RequestParam("file") Optional<MultipartFile> file,
+                                                 @RequestParam("productName") Optional<String> productName,
+                                                 @RequestParam("productDetails") Optional<String> productDetails,
+                                                 @RequestParam("productPrice") Optional<Double> productPrice) {
+        Product existingProduct = productService.getProduct(id);
+        if (existingProduct == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        file.ifPresent(f -> {
+            String fileName = saveFile(f);
+            existingProduct.setProductPhoto(fileName);
+        });
+        productName.ifPresent(existingProduct::setProductName);
+        productDetails.ifPresent(existingProduct::setProductDetails);
+        productPrice.ifPresent(existingProduct::setProductPrice);
+        Product updatedProduct = productService.saveProduct(existingProduct);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        Product existingProduct = productService.getProduct(id);
+        if (existingProduct == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        productService.deleteProduct(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/products/{id}/photo")

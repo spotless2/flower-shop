@@ -3,7 +3,31 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModal, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { log } from 'console';
+import { Observable } from 'rxjs';
+
+interface Product {
+  id: number;
+  productName: string;
+  productDetails: string;
+  productPrice: number;
+  productPhoto: string;
+}
+
+interface BuyerDetails {
+  name: string;
+  address: string;
+  paymentOption: string;
+  buyDate: string;
+}    
+
+interface Order {
+  id: number;
+  productName: string;
+  quantity: number;
+  price: number;
+  buyerDetails: BuyerDetails;
+}    
+
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
@@ -13,10 +37,40 @@ import { log } from 'console';
 })
 
 export class AdminPanelComponent {
+showDetailsOfProduct(product) {
+  this.selectedProduct = product;
+  this.modalService.open(this.productEditModal, { ariaLabelledBy: 'productEditModalLabel' });
+}
 
   @ViewChild('orderDetailsModal') orderDetailsModal: TemplateRef<any>;
+  @ViewChild('productEditModal') productEditModal: TemplateRef<any>;
 
   constructor(private modalService: NgbModal, private http: HttpClient) {}
+
+  showForm = false;
+
+  products: Product[];
+  orders: Order[];
+
+  private productsApiUrl = 'http://localhost:8080/products';
+  private ordersApiUrl = 'http://localhost:8080/orders';
+
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsApiUrl);
+  }
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.ordersApiUrl);
+  }
+
+  ngOnInit() {
+    this.getProducts().subscribe(products => {
+      this.products = products || [];
+    });
+    
+    this.getOrders().subscribe(orders => {
+      this.orders = orders || [];
+    });
+  }
 
   product = {
     name: '',
@@ -31,93 +85,36 @@ export class AdminPanelComponent {
     label.textContent = file.name;
   }
 
-  orders = [
-    {
-      orderNumber: 1,
-      productName: 'Product 1',
-      quantity: 2,
-      price: 10.99,
-      buyerDetails: {
-        name: 'John Doe',
-        address: '123 Main St',
-        paymentOption: 'Credit Card',
-        buyDate: '2022-01-01'
-      }
-    },
-    {
-      orderNumber: 2,
-      productName: 'Product 2',
-      quantity: 1,
-      price: 5.99,
-      buyerDetails: {
-        name: 'Jane Doe',
-        address: '456 Elm St',
-        paymentOption: 'PayPal',
-        buyDate: '2022-01-02'
-      }
-    },
-    {
-      orderNumber: 2,
-      productName: 'Product 2',
-      quantity: 1,
-      price: 5.99,
-      buyerDetails: {
-        name: 'Jane Doe',
-        address: '456 Elm St',
-        paymentOption: 'PayPal',
-        buyDate: '2022-01-02'
-      }
-    },
-    {
-      orderNumber: 2,
-      productName: 'Product 2',
-      quantity: 1,
-      price: 5.99,
-      buyerDetails: {
-        name: 'Jane Doe',
-        address: '456 Elm St',
-        paymentOption: 'PayPal',
-        buyDate: '2022-01-02'
-      }
-    },
-    {
-      orderNumber: 2,
-      productName: 'Product 2',
-      quantity: 1,
-      price: 5.99,
-      buyerDetails: {
-        name: 'Jane Doe',
-        address: '456 Elm St',
-        paymentOption: 'PayPal',
-        buyDate: '2022-01-02'
-      }
-    },
-    {
-      orderNumber: 2,
-      productName: 'Product 2',
-      quantity: 1,
-      price: 5.99,
-      buyerDetails: {
-        name: 'Jane Doe',
-        address: '456 Elm St',
-        paymentOption: 'PayPal',
-        buyDate: '2022-01-02'
-      }
-    },
-    // add more orders here
-  ];
   
   selectedOrder = null;
+  selectedProduct = null;
 
   currentPage = 1;
+  currentPageOfProduct = 1;
   pageSize = 5;
+  pageSizeOfProduct = 5;
+
+  responseMessage = '';
+  responseColor = '';
 
 
   get currentPageOrders() {
+    if (!this.orders) {
+        return [];
+    }
     const start = (this.currentPage - 1) * this.pageSize;
     const end = this.currentPage * this.pageSize;
     return this.orders.slice(start, end);
-  }
+}
+
+get currentPageProducts() {
+    if (!this.products) {
+        return [];
+    }
+    const start = (this.currentPageOfProduct - 1) * this.pageSizeOfProduct;
+    const end = this.currentPageOfProduct * this.pageSizeOfProduct;
+    return this.products.slice(start, end);
+}
   
   showDetails(order) {
     this.selectedOrder = order;
@@ -128,6 +125,56 @@ export class AdminPanelComponent {
     if (event.target.files.length > 0) {
       this.product.photo = event.target.files[0];
     }
+  }
+
+  onProductFileChange(event) {
+    if (event.target.files.length > 0) {
+      this.selectedProduct.file = event.target.files[0];
+    }
+  }
+
+  editProduct(productFormValue) {
+    const formData = new FormData();
+    Object.keys(productFormValue).forEach(key => {
+      formData.append(key, productFormValue[key]);
+    });
+    formData.append('file', this.selectedProduct.file);
+    this.http.put(`http://localhost:8080/products/${this.selectedProduct.id}`, formData).subscribe(
+      response => {
+        this.responseMessage = 'Product updated successfully';
+        this.responseColor = 'green';
+      },
+      error => {
+        this.responseMessage = 'There was an error while updating the product: ' + error.message;
+        this.responseColor = 'red';
+      }
+    );
+  }
+
+  deleteProduct(product) {
+    this.http.delete(`http://localhost:8080/products/${product.id}`).subscribe(
+      () => {
+        // handle successful delete here, e.g. remove product from list
+        window.alert('Product deleted successfully');
+      },
+      error => {
+        // handle error here
+        window.alert('There was an error while deleting the product');
+      }
+    );
+  }
+
+  deleteOrder(order) {
+    this.http.delete(`http://localhost:8080/orders/${order.id}`).subscribe(
+      () => {
+        // handle successful delete here, e.g. remove product from list
+        window.alert('Order deleted successfully');
+      },
+      error => {
+        // handle error here
+        window.alert('There was an error while deleting the order');
+      }
+    );
   }
 
   onSubmit(event) {

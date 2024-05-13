@@ -17,17 +17,20 @@
         <div class="row mb-5">
           <div class="row mb-5">
             <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let item of products">
-              <div class="block-4 text-center border">
-                <figure class="block-4-image">
-                  <a href=""><img [src]="'http://localhost:8080/products/' + item.id + '/photo'" alt="Image placeholder" class="img-fluid"></a>
+              <div class="block-4 text-center border product-container">
+                <figure class="block-4-image product-image">
+                  <a href=""><img [src]="'http://localhost:8080/products/' + item.id + '/photo'" alt="Image placeholder" class="img-fluid product-img"></a>
                 </figure>
-                <div class="block-4-text p-4">
-                  <h3><a href="">{{ item.productName }}</a></h3>
-                  <p class="mb-0">{{ item.productDetails }}</p>
-                  <p class="text-primary font-weight-bold">{{ item.productPrice }}</p>
+                <div class="block-4-text p-4 product-text">
+                  <h3 class="product-title text-bold text-black">{{ item.productName }}</h3>
+                  <br>
+                  <p class="product-description text-italic text-small text-left ml-5">{{ item.productDetails }} + Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, omnis!</p>
+                  <p class="product-price text-right text-red mr-5 text-bold">{{ item.productPrice }} Lei</p>
                   <div class="d-flex justify-content-center align-items-center">
                     <button class="btn btn-outline-dark me-2" data-bs-toggle="button"><i class="bi bi-heart"></i></button>
-                    <button class="btn btn-outline-dark" data-bs-toggle="button"><i class="bi bi-cart"></i> Adauga in cos</button>
+                    <button class="btn" [ngClass]="{'btn-outline-dark': !item.addedToCart, 'btn-danger': item.addedToCart}" data-bs-toggle="button" (click)="addToCart(item)">
+                      <i class="bi bi-cart"></i> {{ item.addedToCart ? 'Sterge din cos' : 'Adauga in cos' }}
+                    </button>      
                   </div>
                 </div>
               </div>

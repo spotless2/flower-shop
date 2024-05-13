@@ -41,3 +41,12 @@
     padding: 1rem;
     border-top: 1px solid #dee2e6;
   }
+
+  .btn-custom {
+    background-color: #d4b672;
+    border-color: #d4b672;
+}
+.btn-custom:hover {
+    background-color: #bda55e;
+    border-color: #bda55e;
+}

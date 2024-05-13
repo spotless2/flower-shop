@@ -15,7 +15,7 @@
 
     <!-- ======= Digital Invitations Section ======= -->
     <section id="digital-invitations" class="digital-invitations">
-        <div class="container">
+        <!-- <div class="container">
 
             <div class="row">
                 <div class="col-lg-6">
@@ -26,7 +26,7 @@
                         important din viata ta?</h1>
                     <p class="text-dark">Completeaza formularul de mai jos cu detaliile necesare si de restul ne ocupam
                         noi</p>
-                        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
                         <div class="form-section" [hidden]="currentSection !== 1">
                             <h2 class="text-dark">Informatii generale</h2>
                             <div class="form-group">
@@ -34,59 +34,75 @@
                                 <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email">
                             </div>
                             <div class="d-flex justify-content-center mt-3">
-                                <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
-                              </div>
+                                <button class="btn btn-custom" type="button" (click)="nextSection()">Inainte</button>
+                            </div>
                         </div>
                         <div class="form-section"
-                        [hidden]="currentSection !== 2 && currentSection !== 3 && currentSection !== 4">
+                            [hidden]="currentSection !== 2 && currentSection !== 3 && currentSection !== 4">
                             <h2 class="text-dark">Detalii sarbatoriti</h2>
                             <div class="form-section" [hidden]="currentSection !== 2">
                                 <div class="form-group">
                                     <h3>Mireasa</h3>
                                     <label for="brideFirstName">Prenume mireasa</label>
-                                    <input type="text" id="brideFirstName" class="form-control" [(ngModel)]="brideFirstName" name="brideFirstName">
+                                    <input type="text" id="brideFirstName" class="form-control"
+                                        [(ngModel)]="brideFirstName" name="brideFirstName">
                                     <label for="brideLastName">Nume mireasa</label>
-                                    <input type="text" id="brideLastName" class="form-control" [(ngModel)]="brideLastName" name="brideLastName">
+                                    <input type="text" id="brideLastName" class="form-control"
+                                        [(ngModel)]="brideLastName" name="brideLastName">
                                     <label for="brideDescription">Cateva cuvinte despre mireasa</label>
-                                    <textarea id="brideDescription" class="form-control" [(ngModel)]="brideDescription" name="brideDescription"></textarea>
+                                    <textarea id="brideDescription" class="form-control" [(ngModel)]="brideDescription"
+                                        name="brideDescription"></textarea>
                                     <label for="bridePhoto">Poza mireasa</label>
-                                    <input type="file" id="bridePhoto" class="form-control" [(ngModel)]="bridePhoto" name="bridePhoto">
+                                    <input type="file" id="bridePhoto" class="form-control" [(ngModel)]="bridePhoto"
+                                        name="bridePhoto">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
-                                  </div>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-custom" type="button"
+                                        (click)="nextSection()">Inainte</button>
+                                </div>
                             </div>
 
                             <div class="form-section" [hidden]="currentSection !== 3">
                                 <div class="form-group">
                                     <h3>Mire</h3>
                                     <label for="groomFirstName">Prenume mire</label>
-                                    <input type="text" id="groomFirstName" class="form-control" [(ngModel)]="groomFirstName" name="groomFirstName">
+                                    <input type="text" id="groomFirstName" class="form-control"
+                                        [(ngModel)]="groomFirstName" name="groomFirstName">
                                     <label for="groomLastName">Nume mire</label>
-                                    <input type="text" id="groomLastName" class="form-control" [(ngModel)]="groomLastName" name="groomLastName">
+                                    <input type="text" id="groomLastName" class="form-control"
+                                        [(ngModel)]="groomLastName" name="groomLastName">
                                     <label for="groomDescription">Cateva cuvinte despre mire</label>
-                                    <textarea id="groomDescription" class="form-control" [(ngModel)]="groomDescription" name="groomDescription"></textarea>
+                                    <textarea id="groomDescription" class="form-control" [(ngModel)]="groomDescription"
+                                        name="groomDescription"></textarea>
                                     <label for="groomPhoto">Poza mire</label>
-                                    <input type="file" id="groomPhoto" class="form-control" [(ngModel)]="groomPhoto" name="groomPhoto">
+                                    <input type="file" id="groomPhoto" class="form-control" [(ngModel)]="groomPhoto"
+                                        name="groomPhoto">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
-                                  </div>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-custom" type="button"
+                                        (click)="nextSection()">Inainte</button>
+                                </div>
                             </div>
                             <div class="form-section" [hidden]="currentSection !== 4">
                                 <h3>Parinti si Nasi</h3>
                                 <div class="form-group">
                                     <label for="parentsName">Nume parinti</label>
-                                    <input type="text" id="parentsName" class="form-control" [(ngModel)]="parentsName" name="parentsName">
+                                    <input type="text" id="parentsName" class="form-control" [(ngModel)]="parentsName"
+                                        name="parentsName">
                                     <label for="godparentsName">Nume Nasi</label>
-                                    <input type="text" id="godparentsName" class="form-control" [(ngModel)]="godparentsName" name="godparentsName">
+                                    <input type="text" id="godparentsName" class="form-control"
+                                        [(ngModel)]="godparentsName" name="godparentsName">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
-                                  </div>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-custom" type="button"
+                                        (click)="nextSection()">Inainte</button>
+                                </div>
                             </div>
                         </div>
 
@@ -97,92 +113,361 @@
                                 <div class="form-group">
                                     <h3>Cununie civila</h3>
                                     <label for="civilLocationName">Numele locatie</label>
-                                    <input type="text" id="civilLocationName" class="form-control" [(ngModel)]="civilLocationName" name="civilLocationName">
+                                    <input type="text" id="civilLocationName" class="form-control"
+                                        [(ngModel)]="civilLocationName" name="civilLocationName">
                                     <label for="civilAddress">Adresa</label>
-                                    <input type="text" id="civilAddress" class="form-control" [(ngModel)]="civilAddress" name="civilAddress">
+                                    <input type="text" id="civilAddress" class="form-control" [(ngModel)]="civilAddress"
+                                        name="civilAddress">
                                     <label for="civilCityCountry">Orasul si tara</label>
-                                    <input type="text" id="civilCityCountry" class="form-control" [(ngModel)]="civilCityCountry" name="civilCityCountry">
+                                    <input type="text" id="civilCityCountry" class="form-control"
+                                        [(ngModel)]="civilCityCountry" name="civilCityCountry">
                                     <label for="civilDate">Data</label>
-                                    <input type="date" id="civilDate" class="form-control" [(ngModel)]="civilDate" name="civilDate">
+                                    <input type="date" id="civilDate" class="form-control" [(ngModel)]="civilDate"
+                                        name="civilDate">
                                     <label for="civilHour">Ora</label>
-                                    <input type="text" id="civilHour" class="form-control" [(ngModel)]="civilHour" name="civilHour">
+                                    <input type="text" id="civilHour" class="form-control" [(ngModel)]="civilHour"
+                                        name="civilHour">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
-                                  </div>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-custom" type="button"
+                                        (click)="nextSection()">Inainte</button>
+                                </div>
                             </div>
                             <div class="form-section" [hidden]="currentSection !== 6">
                                 <div class="form-group">
                                     <h3>Cununie religioasa</h3>
                                     <label for="religiousLocationName">Numele locatie</label>
-                                    <input type="text" id="religiousLocationName" class="form-control" [(ngModel)]="religiousLocationName" name="religiousLocationName">
+                                    <input type="text" id="religiousLocationName" class="form-control"
+                                        [(ngModel)]="religiousLocationName" name="religiousLocationName">
                                     <label for="religiousAddress">Adresa</label>
-                                    <input type="text" id="religiousAddress" class="form-control" [(ngModel)]="religiousAddress" name="religiousAddress">
+                                    <input type="text" id="religiousAddress" class="form-control"
+                                        [(ngModel)]="religiousAddress" name="religiousAddress">
                                     <label for="religiousCityCountry">Orasul si tara</label>
-                                    <input type="text" id="religiousCityCountry" class="form-control" [(ngModel)]="religiousCityCountry" name="religiousCityCountry">
+                                    <input type="text" id="religiousCityCountry" class="form-control"
+                                        [(ngModel)]="religiousCityCountry" name="religiousCityCountry">
                                     <label for="religiousDate">Data</label>
-                                    <input type="date" id="religiousDate" class="form-control" [(ngModel)]="religiousDate" name="religiousDate">
+                                    <input type="date" id="religiousDate" class="form-control"
+                                        [(ngModel)]="religiousDate" name="religiousDate">
                                     <label for="religiousHour">Ora</label>
-                                    <input type="text" id="religiousHour" class="form-control" [(ngModel)]="religiousHour" name="religiousHour">
+                                    <input type="text" id="religiousHour" class="form-control"
+                                        [(ngModel)]="religiousHour" name="religiousHour">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
-                                  </div>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-custom" type="button"
+                                        (click)="nextSection()">Inainte</button>
+                                </div>
                             </div>
                             <div class="form-section" [hidden]="currentSection !== 7">
                                 <div class="form-group">
                                     <h3>Petrecere</h3>
                                     <label for="partyLocationName">Numele locatie</label>
-                                    <input type="text" id="partyLocationName" class="form-control" [(ngModel)]="partyLocationName" name="partyLocationName">
+                                    <input type="text" id="partyLocationName" class="form-control"
+                                        [(ngModel)]="partyLocationName" name="partyLocationName">
                                     <label for="partyAddress">Adresa</label>
-                                    <input type="text" id="partyAddress" class="form-control" [(ngModel)]="partyAddress" name="partyAddress">
+                                    <input type="text" id="partyAddress" class="form-control" [(ngModel)]="partyAddress"
+                                        name="partyAddress">
                                     <label for="partyCityCountry">Orasul si tara</label>
-                                    <input type="text" id="partyCityCountry" class="form-control" [(ngModel)]="partyCityCountry" name="partyCityCountry">
+                                    <input type="text" id="partyCityCountry" class="form-control"
+                                        [(ngModel)]="partyCityCountry" name="partyCityCountry">
                                     <label for="partyDate">Data</label>
-                                    <input type="date" id="partyDate" class="form-control" [(ngModel)]="partyDate" name="partyDate">
+                                    <input type="date" id="partyDate" class="form-control" [(ngModel)]="partyDate"
+                                        name="partyDate">
                                     <label for="partyHour">Ora</label>
-                                    <input type="text" id="partyHour" class="form-control" [(ngModel)]="partyHour" name="partyHour">
+                                    <input type="text" id="partyHour" class="form-control" [(ngModel)]="partyHour"
+                                        name="partyHour">
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 gap-2">
-                                    <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                    <button class="btn btn-primary" type="button" (click)="nextSection()">Inainte</button>
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-custom" type="button"
+                                        (click)="nextSection()">Inainte</button>
                                 </div>
                             </div>
                         </div>
                         <div class="form-section" [hidden]="currentSection !== 8">
                             <div class="form-group">
                                 <h3>Pasi finali</h3>
-                                <label for="digitalInvitationName">Numele invitatiei digitale &#40;site.ro&#47;digital-invitations&#47;i&#47;<strong>numele-invitatiei</strong>&#41;</label>
-                                <input type="text" id="digitalInvitationName" class="form-control" [formControl]="invitationNameControl" name="digitalInvitationName">
-                                <div *ngIf="invitationNameControl.invalid && invitationNameControl.touched" class="text-danger">
-                                    Ati introdus un nume invalid. Numele trebuie să aibă cel puțin 3 caractere și poate conține doar litere, caracterul "-" și caracterul "&"
-                                  </div>
+                                <label for="digitalInvitationName">Numele invitatiei digitale
+                                    &#40;site.ro&#47;digital-invitations&#47;i&#47;<strong>numele-invitatiei</strong>&#41;</label>
+                                <input type="text" id="digitalInvitationName" class="form-control"
+                                    [formControl]="invitationNameControl" name="digitalInvitationName">
+                                <div *ngIf="invitationNameControl.invalid && invitationNameControl.touched"
+                                    class="text-danger">
+                                    Ati introdus un nume invalid. Numele trebuie să aibă cel puțin 3 caractere și poate
+                                    conține doar litere, caracterul "-" și caracterul "&"
+                                </div>
                                 <div class="form-group d-flex align-items-center">
-                                    <button class="btn btn-info mt-2" type="button" (click)="checkNameAvailability(invitationNameControl.value)" [disabled]="invitationNameControl.invalid">Verifica disponibilitatea numelui</button>                                    
+                                    <button class="btn btn-info mt-2" type="button"
+                                        (click)="checkNameAvailability(invitationNameControl.value)"
+                                        [disabled]="invitationNameControl.invalid">Verifica disponibilitatea
+                                        numelui</button>
                                     <div class="p-1 mt-2">
-                                        <i class="fas fa-2x" [ngClass]="{'fa-check text-success': isDigitalInvitationNameAvailable, 'fa-times text-danger': !isDigitalInvitationNameAvailable}" *ngIf="isCheckNameButtonPressed"></i>
+                                        <i class="fas fa-2x"
+                                            [ngClass]="{'fa-check text-success': isDigitalInvitationNameAvailable, 'fa-times text-danger': !isDigitalInvitationNameAvailable}"
+                                            *ngIf="isCheckNameButtonPressed"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center mt-3 gap-2">
-                                <button class="btn btn-secondary" type="button" (click)="previousSection()" *ngIf="currentSection > 1">Inapoi</button>
-                                <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections" [disabled]="!isDigitalInvitationNameAvailable">Submit</button>                              </div>
+                                <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                    *ngIf="currentSection > 1">Inapoi</button>
+                                <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections"
+                                    [disabled]="!isDigitalInvitationNameAvailable">Submit</button>
+                            </div>
                         </div>
                         <br>
                         <div *ngIf="successMessage" class="alert alert-success">
                             {{ successMessage }}
                             <a [href]="digitalInvitationLink">Click aici pentru a vedea invitatia digitala</a>
-                          </div>
-                          
-                          <div *ngIf="errorMessage" class="alert alert-danger">
+                        </div>
+
+                        <div *ngIf="errorMessage" class="alert alert-danger">
                             {{ errorMessage }}
-                          </div>
+                        </div>
                     </form>
                 </div>
             </div>
 
+        </div> -->
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="../assets/img/dig-inv.jpg" class="img-fluid rounded shadow" alt="Digital Invitations">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-6 text-decoration mb-4 text-colored mt-1" style="font-family: 'Dancing Script', cursive; font-size: 325%;">Esti gata sa iti creezi invitatia digitala pentru urmatorul eveniment important din viata ta?</h1>
+                    <br>
+                    <p class="mt-5 lead text-dark display-6" style="font-family: 'Open Sans', cursive; font-size: 230%;">Completeaza formularul de mai jos cu detaliile necesare si de restul ne ocupam noi</p>
+                    <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-custom mt-5" (click)="createInvitePressed = !createInvitePressed">Creeaza-ti invitatia</button>
+                    </div>
+                </div>
+                    </div>
+                    <br>
+            <div class="row justify-content-center mt-5" *ngIf="createInvitePressed">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                            <div class="form-section" [hidden]="currentSection !== 1">
+                                <h2 class="text-dark">Informatii generale</h2>
+                                <div class="form-group">
+                                    <label for="email">Email-ul pe care doriti sa primiti raspunsurile</label>
+                                    <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email">
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button class="btn btn-custom" type="button" (click)="nextSection()">Inainte</button>
+                                </div>
+                            </div>
+                            <div class="form-section"
+                                [hidden]="currentSection !== 2 && currentSection !== 3 && currentSection !== 4">
+                                <h2 class="text-dark">Detalii sarbatoriti</h2>
+                                <div class="form-section" [hidden]="currentSection !== 2">
+                                    <div class="form-group">
+                                        <h3>Mireasa</h3>
+                                        <label for="brideFirstName">Prenume mireasa</label>
+                                        <input type="text" id="brideFirstName" class="form-control"
+                                            [(ngModel)]="brideFirstName" name="brideFirstName">
+                                        <label for="brideLastName">Nume mireasa</label>
+                                        <input type="text" id="brideLastName" class="form-control"
+                                            [(ngModel)]="brideLastName" name="brideLastName">
+                                        <label for="brideDescription">Cateva cuvinte despre mireasa</label>
+                                        <textarea id="brideDescription" class="form-control" [(ngModel)]="brideDescription"
+                                            name="brideDescription"></textarea>
+                                        <label for="bridePhoto">Poza mireasa</label>
+                                        <input type="file" id="bridePhoto" class="form-control" [(ngModel)]="bridePhoto"
+                                            name="bridePhoto">
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-2">
+                                        <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                            *ngIf="currentSection > 1">Inapoi</button>
+                                        <button class="btn btn-custom" type="button"
+                                            (click)="nextSection()">Inainte</button>
+                                    </div>
+                                </div>
+    
+                                <div class="form-section" [hidden]="currentSection !== 3">
+                                    <div class="form-group">
+                                        <h3>Mire</h3>
+                                        <label for="groomFirstName">Prenume mire</label>
+                                        <input type="text" id="groomFirstName" class="form-control"
+                                            [(ngModel)]="groomFirstName" name="groomFirstName">
+                                        <label for="groomLastName">Nume mire</label>
+                                        <input type="text" id="groomLastName" class="form-control"
+                                            [(ngModel)]="groomLastName" name="groomLastName">
+                                        <label for="groomDescription">Cateva cuvinte despre mire</label>
+                                        <textarea id="groomDescription" class="form-control" [(ngModel)]="groomDescription"
+                                            name="groomDescription"></textarea>
+                                        <label for="groomPhoto">Poza mire</label>
+                                        <input type="file" id="groomPhoto" class="form-control" [(ngModel)]="groomPhoto"
+                                            name="groomPhoto">
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-2">
+                                        <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                            *ngIf="currentSection > 1">Inapoi</button>
+                                        <button class="btn btn-custom" type="button"
+                                            (click)="nextSection()">Inainte</button>
+                                    </div>
+                                </div>
+                                <div class="form-section" [hidden]="currentSection !== 4">
+                                    <h3>Parinti si Nasi</h3>
+                                    <div class="form-group">
+                                        <label for="parentsName">Nume parinti</label>
+                                        <input type="text" id="parentsName" class="form-control" [(ngModel)]="parentsName"
+                                            name="parentsName">
+                                        <label for="godparentsName">Nume Nasi</label>
+                                        <input type="text" id="godparentsName" class="form-control"
+                                            [(ngModel)]="godparentsName" name="godparentsName">
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-2">
+                                        <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                            *ngIf="currentSection > 1">Inapoi</button>
+                                        <button class="btn btn-custom" type="button"
+                                            (click)="nextSection()">Inainte</button>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-section"
+                                [hidden]="currentSection !== 5 && currentSection !== 6 && currentSection !== 7">
+                                <h2 class="text-dark">Locatie</h2>
+                                <div class="form-section" [hidden]="currentSection !== 5">
+                                    <button type="button" class="btn btn-sm btn-outline btn-custom d-flex align-items-center" (click)="showFormGroupOne = !showFormGroupOne">
+                                        <span>{{ showFormGroupOne ? 'Nu doresc cununie civila' : 'Doresc cununie civila' }}</span>
+                                      </button>
+                                      <br>
+                                    <div class="form-group" *ngIf="showFormGroupOne">
+                                        <h3>Cununie civila</h3>
+                                        <label for="civilLocationName">Numele locatie</label>
+                                        <input type="text" id="civilLocationName" class="form-control"
+                                            [(ngModel)]="civilLocationName" name="civilLocationName">
+                                        <label for="civilAddress">Adresa</label>
+                                        <input type="text" id="civilAddress" class="form-control" [(ngModel)]="civilAddress"
+                                            name="civilAddress">
+                                        <label for="civilCityCountry">Orasul si tara</label>
+                                        <input type="text" id="civilCityCountry" class="form-control"
+                                            [(ngModel)]="civilCityCountry" name="civilCityCountry">
+                                        <label for="civilDate">Data</label>
+                                        <input type="date" id="civilDate" class="form-control" [(ngModel)]="civilDate"
+                                            name="civilDate">
+                                        <label for="civilHour">Ora</label>
+                                        <input type="text" id="civilHour" class="form-control" [(ngModel)]="civilHour"
+                                            name="civilHour">
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-2">
+                                        <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                            *ngIf="currentSection > 1">Inapoi</button>
+                                        <button class="btn btn-custom" type="button"
+                                            (click)="nextSection()">Inainte</button>
+                                    </div>
+                                </div>
+                                <div class="form-section" [hidden]="currentSection !== 6">
+                                    <button type="button" class="btn btn-sm btn-outline btn-custom d-flex align-items-center" (click)="showFormGroupTwo = !showFormGroupTwo">
+                                        <span>{{ showFormGroupTwo ? 'Nu doresc cununie religioasa' : 'Doresc cununie religioasa' }}</span>
+                                      </button>
+                                      <br>
+                                    <div class="form-group" *ngIf="showFormGroupTwo">
+                                        <h3>Cununie religioasa</h3>
+                                        <label for="religiousLocationName">Numele locatie</label>
+                                        <input type="text" id="religiousLocationName" class="form-control"
+                                            [(ngModel)]="religiousLocationName" name="religiousLocationName">
+                                        <label for="religiousAddress">Adresa</label>
+                                        <input type="text" id="religiousAddress" class="form-control"
+                                            [(ngModel)]="religiousAddress" name="religiousAddress">
+                                        <label for="religiousCityCountry">Orasul si tara</label>
+                                        <input type="text" id="religiousCityCountry" class="form-control"
+                                            [(ngModel)]="religiousCityCountry" name="religiousCityCountry">
+                                        <label for="religiousDate">Data</label>
+                                        <input type="date" id="religiousDate" class="form-control"
+                                            [(ngModel)]="religiousDate" name="religiousDate">
+                                        <label for="religiousHour">Ora</label>
+                                        <input type="text" id="religiousHour" class="form-control"
+                                            [(ngModel)]="religiousHour" name="religiousHour">
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-2">
+                                        <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                            *ngIf="currentSection > 1">Inapoi</button>
+                                        <button class="btn btn-custom" type="button"
+                                            (click)="nextSection()">Inainte</button>
+                                    </div>
+                                </div>
+                                <div class="form-section" [hidden]="currentSection !== 7">
+                                    <div class="form-group">
+                                        <h3>Petrecere</h3>
+                                        <label for="partyLocationName">Numele locatie</label>
+                                        <input type="text" id="partyLocationName" class="form-control"
+                                            [(ngModel)]="partyLocationName" name="partyLocationName">
+                                        <label for="partyAddress">Adresa</label>
+                                        <input type="text" id="partyAddress" class="form-control" [(ngModel)]="partyAddress"
+                                            name="partyAddress">
+                                        <label for="partyCityCountry">Orasul si tara</label>
+                                        <input type="text" id="partyCityCountry" class="form-control"
+                                            [(ngModel)]="partyCityCountry" name="partyCityCountry">
+                                        <label for="partyDate">Data</label>
+                                        <input type="date" id="partyDate" class="form-control" [(ngModel)]="partyDate"
+                                            name="partyDate">
+                                        <label for="partyHour">Ora</label>
+                                        <input type="text" id="partyHour" class="form-control" [(ngModel)]="partyHour"
+                                            name="partyHour">
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-3 gap-2">
+                                        <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                            *ngIf="currentSection > 1">Inapoi</button>
+                                        <button class="btn btn-custom" type="button"
+                                            (click)="nextSection()">Inainte</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-section" [hidden]="currentSection !== 8">
+                                <div class="form-group">
+                                    <h3>Pasi finali</h3>
+                                    <label for="digitalInvitationName">Numele invitatiei digitale
+                                        &#40;site.ro&#47;digital-invitations&#47;i&#47;<strong>numele-invitatiei</strong>&#41;</label>
+                                    <input type="text" id="digitalInvitationName" class="form-control"
+                                        [formControl]="invitationNameControl" name="digitalInvitationName">
+                                    <div *ngIf="invitationNameControl.invalid && invitationNameControl.touched"
+                                        class="text-danger">
+                                        Ati introdus un nume invalid. Numele trebuie să aibă cel puțin 3 caractere și poate
+                                        conține doar litere, caracterul "-" și caracterul "&"
+                                    </div>
+                                    <div class="form-group d-flex align-items-center">
+                                        <button class="btn btn-info mt-2" type="button"
+                                            (click)="checkNameAvailability(invitationNameControl.value)"
+                                            [disabled]="invitationNameControl.invalid">Verifica disponibilitatea
+                                            numelui</button>
+                                        <div class="p-1 mt-2">
+                                            <i class="fas fa-2x"
+                                                [ngClass]="{'fa-check text-success': isDigitalInvitationNameAvailable, 'fa-times text-danger': !isDigitalInvitationNameAvailable}"
+                                                *ngIf="isCheckNameButtonPressed"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3 gap-2">
+                                    <button class="btn btn-secondary" type="button" (click)="previousSection()"
+                                        *ngIf="currentSection > 1">Inapoi</button>
+                                    <button class="btn btn-success" type="submit" *ngIf="currentSection === totalSections"
+                                        [disabled]="!isDigitalInvitationNameAvailable">Submit</button>
+                                </div>
+                            </div>
+                            <br>
+                            <div *ngIf="successMessage" class="alert alert-success">
+                                {{ successMessage }}
+                                <a [href]="digitalInvitationLink">Click aici pentru a vedea invitatia digitala</a>
+                            </div>
+    
+                            <div *ngIf="errorMessage" class="alert alert-danger">
+                                {{ errorMessage }}
+                            </div>
+                            </form>
+                            <!-- Add more form sections here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section><!-- End Digital Invitations Section -->
 

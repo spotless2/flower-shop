@@ -26,47 +26,52 @@
     </nav>
 
     <div class="d-flex">
-      <!-- Modal for Favorites Items -->
-      <ng-template #favoritesContent let-modal>
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-favorites">Favorites</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ul>
-            <li *ngFor="let item of favorites">{{ item.name }}</li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
-        </div>
-      </ng-template>
 
       <!-- Modal for Cart Items -->
             <ng-template #cartContent let-modal>
         <div class="modal-header">
-          <h4 class="modal-title" id="modal-cart">Cart</h4>
+          <h4 class="modal-title" id="modal-cart">Cos</h4>
           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <ul>
-            <li *ngFor="let item of cart">{{ item.name }}</li>
+          <ul *ngIf="cart.length > 0; else emptyCart">
+            <li *ngFor="let item of cart">
+              <div style="display: flex; justify-content: space-between;">
+                <span>{{ item.name }}</span>
+                <span>Pret: {{ item.price }} lei</span>
+                <button class="btn btn-outline-danger btn-sm" (click)="removeFromCart(item)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </button>
+              </div>
+            </li>
           </ul>
+          <ng-template #emptyCart>
+            <p>Nu ai adaugat nimic in cos</p>
+          </ng-template>
+          <div *ngIf="cart.length > 0" style="display: flex; justify-content: space-between; font-weight: bold;">
+            <span>Total:</span>
+            <span>{{ total }} lei</span>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
+          <button type="button" class="btn btn-success me-2" [disabled]="total === 0" (click)="proceedToCheckout()">Finalizeaza comanda</button>
+          <button type="button" class="btn btn-outline btn-custom" (click)="modal.close('Close click')">Close</button>
         </div>
       </ng-template>
-
-      <button class="btn btn-outline-dark me-2" (click)="openFavorites(favoritesContent)"><i class="bi bi-heart"></i></button>
-      <a href="https://www.instagram.com/your_account/" target="_blank" class="btn btn-outline-dark me-2">
+      <a href="https://www.instagram.com/your_account/" target="_blank" class="btn btn-outline btn-custom me-2">
         <i class="bi bi-instagram"></i>
       </a>
-      <button class="btn btn-outline-dark" (click)="openCart(cartContent)"><i class="bi bi-cart"></i></button>      
+      <button class="btn btn-outline btn-custom position-relative" (click)="openCart(cartContent)">
+        <i class="bi bi-cart"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{cartItemCount}}
+            <span class="visually-hidden">unread messages</span>
+        </span>
+    </button>
     </div>
 
   </div>

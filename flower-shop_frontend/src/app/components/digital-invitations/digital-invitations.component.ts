@@ -74,6 +74,9 @@ export class DigitalInvitationsComponent {
   }
 
   form1: FormGroup;
+  showFormGroupOne = false;
+  showFormGroupTwo = false;
+  createInvitePressed = false;
 
   constructor(private http: HttpClient, private router: Router) {
     this.form1 = new FormGroup({

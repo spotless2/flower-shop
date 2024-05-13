@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgbCollapseModule, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { CartService } from '../../services/cart.service';
 
 declare function burgerMenu(): void;
 
@@ -21,27 +22,47 @@ export class NavbarComponent {
     burgerMenu();
   }
 
-  
-  favorites = [
-    { name: 'Item1' },
-    { name: 'Item2' },
-    { name: 'Item3' }
-  ];
+  ngOnInit() {
+    this.cartService.currentCartItemCount.subscribe(count => this.cartItemCount = count);
+  }
 
-  cart = [
-    { name: 'cart1' },
-    { name: 'cart1' },
-    { name: 'cart2' }
-  ];
+  get total() {
+    return this.cart.reduce((total, item) => total + item.price, 0);
+  }
+  proceedToCheckout() {
+    // Implement your checkout logic here
+  }
 
-  constructor(private modalService: NgbModal) {}
+  removeFromCart(item: any) {
+    const index = this.cart.findIndex(i => i.name === item.name && i.price === item.price);
+    
+    if (index > -1) {
+      this.cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      this.updateCartItemCount();
+    }
+  }
+
+  cartItemCount = 0;
+
+
+  cart = JSON.parse(localStorage.getItem('cart') || '[]').map((item: any) => ({ name: item.productName, price: item.productPrice }));
+
+  constructor(private modalService: NgbModal, private cartService: CartService) {
+    this.updateCartItemCount();
+  }
 
   openFavorites(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-favorites' });
   }
   openCart(content: any) {
+    this.cart = JSON.parse(localStorage.getItem('cart') || '[]').map((item: any) => ({ name: item.productName, price: item.productPrice }));
     this.modalService.open(content, { ariaLabelledBy: 'modal-cart' });
   }
+
+  updateCartItemCount() {
+    this.cartItemCount = this.cart.length;
+}
 
 
 }

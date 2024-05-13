@@ -1,9 +1,6 @@
 package com.app.flowershop.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -43,25 +40,26 @@ public class DigitalInvitationData {
     private String parentsName;
     @NotEmpty
     private String godparentsName;
-    @NotEmpty
+    @Column(nullable = true)
+
     private String civilAddress;
-    @NotEmpty
+    @Column(nullable = true)
     private String civilCityCountry;
-    @NotEmpty
+    @Column(nullable = true)
     private String civilHour;
-    @NotNull
+    @Column(nullable = true)
     private LocalDate civilDate;
-    @NotEmpty
+    @Column(nullable = true)
     private String civilLocationName;
-    @NotEmpty
+    @Column(nullable = true)
     private String religiousAddress;
-    @NotEmpty
+    @Column(nullable = true)
     private String religiousCityCountry;
-    @NotEmpty
+    @Column(nullable = true)
     private String religiousHour;
-    @NotNull
+    @Column(nullable = true)
     private LocalDate religiousDate;
-    @NotEmpty
+    @Column(nullable = true)
     private String religiousLocationName;
     @NotEmpty
     private String partyAddress;

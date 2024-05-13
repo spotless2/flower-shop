@@ -14,3 +14,16 @@
   .bs-datepicker .day.active {
     background-color: #007bff;
   }
+
+  .text-colored {
+    color: #df8b0f;
+  }
+
+  .btn-custom {
+    background-color: #d4b672;
+    border-color: #d4b672;
+}
+.btn-custom:hover {
+    background-color: #bda55e;
+    border-color: #bda55e;
+}

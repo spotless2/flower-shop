@@ -51,27 +51,25 @@
             </thead>
             <tbody>
               <tr *ngFor="let order of currentPageOrders">
-                <td>{{ order.orderNumber }}</td>
+                <td>{{ order.id }}</td>
                 <td>{{ order.productName }}</td>
                 <td>{{ order.quantity }}</td>
                 <td>{{ order.price }}</td>
                 <td>
                   <button class="btn btn-primary" (click)="showDetails(order)">Show Details</button>
+                  <button class="btn btn-danger" (click)="deleteOrder(order)">Delete</button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
         
-        <ngb-pagination [collectionSize]="orders.length" [(page)]="currentPage" [pageSize]="pageSize"></ngb-pagination>
+        <ngb-pagination [collectionSize]="orders?.length" [(page)]="currentPage" [pageSize]="pageSize"></ngb-pagination>
 
 <!-- Order Details Modal -->
 <ng-template #orderDetailsModal let-modal>
   <div class="modal-header">
     <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="modal-body">
     <table class="table">
@@ -95,9 +93,77 @@
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>
+
+<h2>Products</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Description</th>
+        <th>Product Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of currentPageProducts">
+        <td>{{ product.id }}</td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productDetails }}</td>
+        <td>{{ product.productPrice }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="showDetailsOfProduct(product)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ngb-pagination [collectionSize]="products?.length" [(page)]="currentPageOfProduct" [pageSize]="pageSizeOfProduct"></ngb-pagination>
+
+<!-- Order Details Modal -->
+<ng-template #productEditModal let-modal>
+<div class="modal-header">
+<h5 class="modal-title" id="productEditModalLabel">Edit Product</h5>
+
+</div>
+<div class="modal-body">
+  <form #productForm="ngForm" (ngSubmit)="editProduct(productForm.value)">
+    <div class="form-group mb-2">
+      <label for="productName">Product Name</label>
+      <input type="text" class="form-control" name="productName" id="productName" placeholder="Enter product name" [(ngModel)]="selectedProduct.productName" required>
+    </div>
+    <div class="form-group mb-2">
+      <label for="productDescription">Product Description</label>
+      <textarea class="form-control" value="" name="productDetails" id="productDetails" placeholder="Enter product description" [(ngModel)]="selectedProduct.productDetails" required></textarea>
+    </div>
+    <div class="form-group mb-2">
+      <label for="productPrice">Product Price</label>
+      <input type="text" class="form-control" name="productPrice" id="productPrice" placeholder="Enter product price" [(ngModel)]="selectedProduct.productPrice" required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="formFileSm" class="form-label">Product photo</label>
+      <input class="form-control form-control-sm" id="formFileSm" type="file" (change)="onProductFileChange($event)" name="file" id="file" required>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success">Edit</button>
+    </div>
+    <p [style.color]="responseColor">{{ responseMessage }}</p>
+  </form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
+</div>
+</ng-template>
+
   
-        <!-- Add Products Form -->
-        <h2>Add Products</h2>
+<!-- Add Products Button -->
+<button class="btn btn-primary mb-3" (click)="showForm = !showForm">Add Products</button>
+
+<!-- Add Products Form -->
+<div *ngIf="showForm">
+  <h2>Add Products</h2>
         <form (submit)="onSubmit($event)">
             <div class="form-group mb-2">
                 <label for="productName">Product Name</label>
@@ -117,6 +183,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        </div>
       </main>
     </div>
   </div>
